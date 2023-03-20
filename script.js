@@ -83,3 +83,5 @@ btnHold.addEventListener('click', function () {
 //   current1.textContent = 0;
 // };
 // document.querySelector('.btn--new').addEventListener('click', backToZero);
+
+// just as a push
