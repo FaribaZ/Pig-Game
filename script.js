@@ -2,21 +2,19 @@
 
 // document.querySelector('.btn--new').addEventListener('click', backToZero);
 
-// document.querySelector('.btn--new').addEventListener('click', backToZero);
-
-//select elements
+//select elements (El means element)
 const player0El = document.querySelector('.player--0');
 const player1El = document.querySelector('.player--1');
 
-const totalScor0El = document.getElementById('score--0');
-const totalScore1El = document.getElementById('score--1');
+let totalScor0El = document.getElementById('score--0');
+let totalScore1El = document.getElementById('score--1');
 
 const diceEl = document.querySelector('.dice');
 const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
-const current0 = document.getElementById('current--0');
-const current1 = document.getElementById('current--1');
+let current0 = document.getElementById('current--0');
+let current1 = document.getElementById('current--1');
 //starting condition
 totalScor0El.textContent = 0;
 totalScore1El.textContent = 0;
@@ -49,13 +47,14 @@ btnRoll.addEventListener('click', function () {
 });
 
 btnHold.addEventListener('click', function () {
-  // 1. add current score to the total score
+  // 1. add taken score to the total score
+
   scores[activePlayer] += currentScore;
-  //currentScore[1] = currentScore[1] + currentScore;
-  // scores[1] = scores[1] + currentScore
   document.getElementById(`score--${activePlayer}`).textContent =
     scores[activePlayer];
-  // 2. if hte total score >=100 olayer wins
+  console.log(scores[activePlayer]);
+  console.log(currentScore);
+  // 2. if  total score >=100 player wins
   if (scores[activePlayer] >= 20) {
     document
       .querySelector(`.playe--${activePlayer}`)
@@ -64,24 +63,17 @@ btnHold.addEventListener('click', function () {
       .querySelector(`.playe--${activePlayer}`)
       .classList.remove('player--active');
   } else {
+    // 3. if else switch the player
     switchPlayer();
   }
-
-  // 3. if else change the player
 
   // totalScor0El += currentScore;
 });
 
-// btnHold.addEventListener('click', function () {
-//   scor0El += currentScore;
-// });
-
-// let backToZero = function () {
-//   totalScor0El.textContent = 0;
-//   totalScor1El.textContent = 0;
-//   current0.textContent = 0;
-//   current1.textContent = 0;
-// };
-// document.querySelector('.btn--new').addEventListener('click', backToZero);
-
-// just as a push
+btnNew.addEventListener('click', function () {
+  diceEl.classList.add('hidden');
+  current0.textContent = 0;
+  current1.textContent = 0;
+  totalScor0El.textContent = 0;
+  totalScore1El.textContent = 0;
+});
